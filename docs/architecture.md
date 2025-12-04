@@ -82,6 +82,11 @@ The architectural choices that define how language models process and generate t
     <td>Press et al.</td>
     <td>2022</td>
   </tr>
+  <tr>
+    <td><a href="https://arxiv.org/abs/2305.19466">The Impact of Positional Encoding on Length Generalization in Transformers</a></td>
+    <td>Kazemnejad et al.</td>
+    <td>2023</td>
+  </tr>
 </table>
 
 ### Normalization
