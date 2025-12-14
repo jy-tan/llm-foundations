@@ -2,6 +2,8 @@
 
 The architectural choices that define how language models process and generate text. This section covers the Transformer and its variants, attention mechanisms, positional encodings, normalization strategies, and alternative architectures like state space models. These papers establish the fundamental building blocks that determine a model's capabilities and efficiency.
 
+A curated dataset of open-weight Transformer model architectures (2017-present) is [available here](/data/architectures.csv).
+
 ## Core Designs
 
 <table>

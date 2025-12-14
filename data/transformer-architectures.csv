@@ -1,0 +1,54 @@
+Model Name,Year,Month,Day,Normalization Type,Parallel Layer,Pre-norm,Position Embedding,Activation Function,Stability Tricks,ArXiv/Paper Link,Tokenizer (Vocab Size),MoE,MLP Factor,Number of Layers,Model Dimension
+Original Transformer,2017,06,12,LayerNorm,Serial,No (Post-norm),Sinusoidal,ReLU,None,https://arxiv.org/abs/1706.03762,BPE (37000),No,4x,6 encoder + 6 decoder,512
+GPT-1,2018,06,11,LayerNorm,Serial,No (Post-norm),Learned Absolute,GeLU,None,https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf,BPE (40478),No,4x,12,768
+GPT-2 (1.5B),2019,02,14,LayerNorm,Serial,Yes,Learned Absolute,GeLU,Modified init (1/√N),https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf,Byte-level BPE (50257),No,4x,48,1600
+T5 (11B),2019,10,23,Simplified LayerNorm (no bias),Serial,Yes,Relative (learned),ReLU,None,https://arxiv.org/abs/1910.10683,SentencePiece (32128),No,4x,24 encoder + 24 decoder,1024
+GPT-3 (175B),2020,05,28,LayerNorm,Serial,Yes,Learned Absolute,GeLU,Modified init; alternating sparse attention,https://arxiv.org/abs/2005.14165,Byte-level BPE (50257),No,4x,96,12288
+T5 v1.1 (XXL 11B),2020,10,,Simplified LayerNorm (no bias),Serial,Yes,Relative (learned),GeGLU,None,https://github.com/google-research/text-to-text-transfer-transformer,SentencePiece (32128),No,~8/3,24 encoder + 24 decoder,2048
+mT5 (XXL 13B),2020,10,22,Simplified LayerNorm (no bias),Serial,Yes,Relative (learned),GeGLU,None,https://arxiv.org/abs/2010.11934,SentencePiece (250112),No,~8/3,24 encoder + 24 decoder,2048
+GPT-J (6B),2021,05,,LayerNorm,Parallel,Yes,RoPE (25% rotary),GeLU,None,https://github.com/kingoflolz/mesh-transformer-jax,GPT-2 BPE (50257),No,4x,28,4096
+LaMDA (137B),2021,05,,LayerNorm,Serial,Yes,Relative (T5-style),Gated-GeLU,None,https://arxiv.org/abs/2201.08239,SentencePiece BPE (32000),No,8x,64,8192
+Gopher (280B),2021,12,08,RMSNorm,Serial,Yes,Relative (Transformer-XL),GeLU,Lower LR at scale; gradient clip 0.25,https://arxiv.org/abs/2112.11446,SentencePiece (32000),No,4x,80,16384
+Chinchilla (70B),2022,03,29,RMSNorm,Serial,Yes,Relative (Transformer-XL),GeLU,AdamW optimizer,https://arxiv.org/abs/2203.15556,SentencePiece (32000),No,4x,80,8192
+GPT-NeoX (20B),2022,04,14,LayerNorm,Parallel,Yes,RoPE,GeLU,None,https://arxiv.org/abs/2204.06745,BPE (50257),No,4x,44,6144
+PaLM (540B),2022,04,05,LayerNorm (no bias),Parallel,Yes,RoPE,SwiGLU,No biases; shared input/output embeddings,https://arxiv.org/abs/2204.02311,SentencePiece (256000),No,~8/3,118,18432
+OPT (175B),2022,05,02,LayerNorm,Serial,Yes,Learned Absolute,ReLU,Weight init modifications,https://arxiv.org/abs/2205.01068,GPT-2 BPE (50272),No,4x,96,12288
+BLOOM (176B),2022,11,09,LayerNorm,Serial,Yes,ALiBi,GeLU,Embedding LayerNorm,https://arxiv.org/abs/2211.05100,Byte-level BPE (250680),No,4x,70,14336
+LLaMA (65B),2023,02,27,RMSNorm,Serial,Yes,RoPE,SwiGLU,No biases,https://arxiv.org/abs/2302.13971,SentencePiece BPE (32000),No,~8/3,80,8192
+LLaMA 2 (70B),2023,07,18,RMSNorm,Serial,Yes,RoPE,SwiGLU,No biases; GQA,https://arxiv.org/abs/2307.09288,SentencePiece BPE (32000),No,~8/3,80,8192
+Qwen (14B),2023,09,28,RMSNorm,Serial,Yes,RoPE,SwiGLU,None,https://arxiv.org/abs/2309.16609,BBPE (151851),No,~8/3,40,5120
+Mistral (7B),2023,10,10,RMSNorm,Serial,Yes,RoPE,SwiGLU,Sliding window attention; GQA,https://arxiv.org/abs/2310.06825,SentencePiece BPE (32000),No,~3.5x,32,4096
+Yi (34B),2023,11,,RMSNorm,Serial,Yes,RoPE,SwiGLU,GQA,https://arxiv.org/abs/2403.04652,BBPE (~64000),No,~8/3,60,7168
+DeepSeek (67B),2024,01,05,RMSNorm,Serial,Yes,RoPE,SwiGLU,GQA,https://arxiv.org/abs/2401.02954,BPE (102400),No,~8/3,95,8192
+Mixtral (8x7B),2024,01,08,RMSNorm,Serial,Yes,RoPE,SwiGLU,Sparse routing; load balancing loss,https://arxiv.org/abs/2401.04088,BPE (32000),Yes (8E; 2 active; 46.7B total/12.9B active),~3.5x,32,4096
+OLMo (7B),2024,02,01,Non-parametric LayerNorm,Serial,Yes,RoPE,SwiGLU,No biases,https://arxiv.org/abs/2402.00838,BPE (50280),No,~8/3,32,4096
+Gemma (7B),2024,02,21,RMSNorm,Serial,Yes,RoPE,GeGLU,None,https://arxiv.org/abs/2403.08295,SentencePiece (256000),No,~8/3,28,3072
+Phi-3 Small (7B),2024,04,22,RMSNorm,Serial,Yes,RoPE,GeGLU (SiLU-gated),Blocksparse attention,https://arxiv.org/abs/2404.14219,tiktoken (100352),No,~8/3,32,4096
+Reka Flash (21B),2024,04,15,RMSNorm,Serial,Yes,RoPE,SwiGLU,GQA,https://arxiv.org/abs/2404.12387,SentencePiece/tiktoken (100000),No,~8/3,~50,Not disclosed
+Nemotron-4 (340B),2024,06,17,RMSNorm,Serial,Yes,RoPE,SwiGLU,GQA,https://arxiv.org/abs/2406.11704,BPE (~256000),No,~8/3,96,18432
+GLM-4 (9B),2024,06,18,RMSNorm,Serial,Yes,RoPE (2D),SwiGLU,No bias except QKV,https://arxiv.org/abs/2406.12793,tiktoken (~150000),No,~8/3,40,4096
+Qwen 2 (72B),2024,07,15,RMSNorm,Serial,Yes,RoPE + DCA,SwiGLU,QKV bias,https://arxiv.org/abs/2407.10671,BBPE (151936),No,~8/3,80,8192
+LLaMA 3 (70B),2024,07,23,RMSNorm,Serial,Yes,RoPE,SwiGLU,GQA,https://arxiv.org/abs/2407.21783,tiktoken BPE (128256),No,~8/3,80,8192
+LLaMA 3 (405B),2024,07,23,RMSNorm,Serial,Yes,RoPE,SwiGLU,GQA,https://arxiv.org/abs/2407.21783,tiktoken BPE (128256),No,~8/3,126,16384
+Mistral Large 2 (123B),2024,07,24,RMSNorm,Serial,Yes,RoPE,SwiGLU,-,https://mistral.ai/news/mistral-large-2407/,BPE (~32000),No,~8/3,88,Not disclosed
+Falcon 2 (11B),2024,07,15,LayerNorm,Parallel,Yes,RoPE,GeLU,FlashAttention-2,https://arxiv.org/abs/2407.14885,Falcon BPE (65024),No,~4x,60,4096
+Gemma 2 (27B),2024,08,01,RMSNorm (Pre+Post),Serial,Yes,RoPE,GeGLU,Logit soft-capping; interleaved local-global attn,https://arxiv.org/abs/2408.00118,SentencePiece (256000),No,~8/3,46,4608
+Command R+,2024,09,,LayerNorm,Serial,Yes,RoPE,SwiGLU,GQA; RAG optimization,https://cohere.com/command,BPE (~256000),No,~8/3,Not disclosed,Not disclosed
+Qwen 2.5 (72B),2024,12,19,RMSNorm,Serial,Yes,RoPE,SwiGLU,QKV bias,https://arxiv.org/abs/2412.15115,BBPE (151936),No,~8/3,80,8192
+Phi-4 (14B),2024,12,12,RMSNorm,Serial,Yes,RoPE,SiLU/GeGLU,Synthetic data focus,https://arxiv.org/abs/2412.08905,tiktoken (100352),No,~8/3,40,5120
+DeepSeek V3 (671B total),2024,12,25,RMSNorm,Serial,Yes,RoPE,SwiGLU,Aux-loss-free balancing; FP8 training; MLA,https://arxiv.org/abs/2412.19437,BPE (128000),Yes (256E+1 shared; 8 active; 37B active),~8/3,61,7168
+OLMo 2 (7B),2025,01,02,RMSNorm,Serial,Yes,RoPE,SwiGLU,QK-Norm; Z-Loss,https://arxiv.org/abs/2501.00656,BPE (100278),No,~8/3,32,4096
+MiniMax M2 (230B total),2025,01,14,DeepNorm + RMSNorm,Serial,Yes,RoPE,SwiGLU,Lightning Attention; hybrid linear-softmax attention,https://arxiv.org/abs/2501.08313,BPE (~200000),Yes (32E; top-2; ~45B active),~8/3,80,6144
+DeepSeek R1 (671B total),2025,01,22,RMSNorm,Serial,Yes,RoPE,SwiGLU,Aux-loss-free balancing; FP8 training; MLA,https://arxiv.org/abs/2501.12948,BPE (128000),Yes (256E+1 shared; 37B active),~8/3,61,7168
+SmolLM2 (1.7B),2025,02,05,RMSNorm,Serial,Yes,RoPE,SwiGLU,Embedding tying,https://arxiv.org/abs/2502.02737,Custom BPE (49152),No,~8/3,24,2048
+Gemma 3 (27B),2025,03,12,RMSNorm (Pre+Post),Serial,Yes,RoPE,GeGLU,QK-norm; 5:1 local/global attention,https://arxiv.org/abs/2503.19786,SentencePiece (262144),No,~8/3,62,3584
+Command A (111B),2025,03,13,LayerNorm,Parallel,Yes,RoPE + NoPE (hybrid),SwiGLU,No biases; shared embeddings; FP32 sensitive ops,https://arxiv.org/abs/2504.00698,BPE (255029),No,~8/3,40 (interleaved SWA/Full 3:1),8192
+Llama 4 Scout (109B total),2025,04,05,RMSNorm,Serial + MoE,Yes,iRoPE (interleaved NoPE),SwiGLU,MetaP init; FP8 training,https://ai.meta.com/blog/llama-4-multimodal-intelligence/,tiktoken BPE (202048),Yes (16E+1 shared; 17B active),~8/3,48,5120
+Llama 4 Maverick (400B total),2025,04,05,RMSNorm,Alternating dense + MoE,Yes,iRoPE,SwiGLU,MetaP init; FP8; early fusion,https://ai.meta.com/blog/llama-4-multimodal-intelligence/,tiktoken BPE (202048),Yes (128E+1 shared; 17B active),~8/3,48,5120
+Qwen 3 (235B),2025,05,14,RMSNorm,Serial,Yes,RoPE,SwiGLU,QK-Norm; no QKV bias,https://arxiv.org/abs/2505.09388,BBPE (151669),No,~8/3,94,5120
+Mistral Medium 3 (83B),2025,05,15,RMSNorm,Serial,Yes,RoPE,SwiGLU,-,https://mistral.ai/news/mistral-medium-3,BPE (131072),No,~8/3,Not disclosed,Not disclosed
+GLM-4.5 (355B total),2025,07,28,RMSNorm,Serial,Yes,RoPE,SwiGLU,QK-Norm; Muon optimizer,https://arxiv.org/abs/2508.06471,tiktoken (~150000),Yes (64E; 4 active; ~32B active),~8/3,62,6144
+Kimi K2 (1T total),2025,07,28,RMSNorm,Serial,Yes,RoPE,SwiGLU,QK-Clip; MuonClip optimizer; MLA,https://arxiv.org/abs/2507.20534,BPE (129792),Yes (384E; 8 active; 32B active),~8/3,61,7168
+INTELLECT-3 (106B total),2025,11,26,RMSNorm,Serial,Yes,RoPE,SwiGLU,Same as GLM-4.5-Air base,https://www.primeintellect.ai/blog/intellect-3,BPE (~150000),Yes (64E; 4 active; ~12B active),~8/3,62,4096
+Trinity Nano (6B),2025,12,01,Depth-scaled sandwich norm (RMSNorm),Serial,Yes,RoPE + NoPE (3:1 local/global),SwiGLU + Gated Attention,QK-norm; sigmoid routing; aux-loss-free balancing; depth-scaled init,https://www.arcee.ai/blog/the-trinity-manifesto,Custom BPE (~32000),Yes (128E; 8 active; 800M active),~8/3,56,Not disclosed
+Trinity Mini (26B),2025,12,01,Depth-scaled sandwich norm (RMSNorm),Serial,Yes,RoPE + NoPE (3:1 local/global),SwiGLU + Gated Attention,QK-norm; sigmoid routing; aux-loss-free balancing; depth-scaled init,https://www.arcee.ai/blog/the-trinity-manifesto,Custom BPE (~32000),Yes (128E+1 shared; 8 active; 3B active),~8/3,Not disclosed,Not disclosed
